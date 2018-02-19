@@ -8,7 +8,7 @@ defmodule Instagram.Accounts.User do
     field :avatar, :string
     field :email, :string
     field :facebook_id, :string
-    field :first_namne, :string
+    field :first_name, :string
     field :last_name, :string
     field :username, :string
 
@@ -18,8 +18,8 @@ defmodule Instagram.Accounts.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:username, :avatar, :facebook_id, :email, :first_namne, :last_name])
-    |> validate_required([:username, :avatar, :facebook_id, :email, :first_namne, :last_name])
-    |> unique_constraint(:email)
+    |> cast(attrs, [:username, :avatar, :facebook_id, :email, :first_name, :last_name])
+    |> validate_required([:username, :avatar, :facebook_id, :email, :first_name, :last_name])
+    |> unique_constraint([:email, :facebook_id])
   end
 end
