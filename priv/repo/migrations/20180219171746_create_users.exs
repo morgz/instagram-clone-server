@@ -7,7 +7,7 @@ defmodule Instagram.Repo.Migrations.CreateUsers do
       add :avatar, :string
       add :facebook_id, :string
       add :email, :string
-      add :first_namne, :string
+      add :first_name, :string
       add :last_name, :string
 
       timestamps()

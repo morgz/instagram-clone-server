@@ -6,9 +6,9 @@ defmodule Instagram.AccountsTest do
   describe "users" do
     alias Instagram.Accounts.User
 
-    @valid_attrs %{avatar: "some avatar", email: "some email", facebook_id: "some facebook_id", first_namne: "some first_namne", last_name: "some last_name", username: "some username"}
-    @update_attrs %{avatar: "some updated avatar", email: "some updated email", facebook_id: "some updated facebook_id", first_namne: "some updated first_namne", last_name: "some updated last_name", username: "some updated username"}
-    @invalid_attrs %{avatar: nil, email: nil, facebook_id: nil, first_namne: nil, last_name: nil, username: nil}
+    @valid_attrs %{avatar: "some avatar", email: "some email", facebook_id: "some facebook_id", first_name: "some first_name", last_name: "some last_name", username: "some username"}
+    @update_attrs %{avatar: "some updated avatar", email: "some updated email", facebook_id: "some updated facebook_id", first_name: "some updated first_name", last_name: "some updated last_name", username: "some updated username"}
+    @invalid_attrs %{avatar: nil, email: nil, facebook_id: nil, first_name: nil, last_name: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -34,7 +34,7 @@ defmodule Instagram.AccountsTest do
       assert user.avatar == "some avatar"
       assert user.email == "some email"
       assert user.facebook_id == "some facebook_id"
-      assert user.first_namne == "some first_namne"
+      assert user.first_name == "some first_name"
       assert user.last_name == "some last_name"
       assert user.username == "some username"
     end
@@ -50,7 +50,7 @@ defmodule Instagram.AccountsTest do
       assert user.avatar == "some updated avatar"
       assert user.email == "some updated email"
       assert user.facebook_id == "some updated facebook_id"
-      assert user.first_namne == "some updated first_namne"
+      assert user.first_name == "some updated first_name"
       assert user.last_name == "some updated last_name"
       assert user.username == "some updated username"
     end
