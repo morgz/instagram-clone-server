@@ -3,6 +3,8 @@ defmodule InstagramWeb.Schema do
   alias InstagramWeb.Resolvers
 
   import_types InstagramWeb.Schema.PostsTypes
+  import_types InstagramWeb.Schema.AccountsTypes
+
   # Query or Mutation
   query do
     @desc "Gets a list of followers photos"
@@ -16,5 +18,14 @@ defmodule InstagramWeb.Schema do
       resolve &Resolvers.Posts.photo/3
     end
 
+  end
+
+  mutation do
+    @description "Login as a user"
+    field :login, :user_session do
+      arg :token, :string
+      arg :provider, type: :provider
+      resolve &Resolvers.Accounts.login/3
+    end
   end
 end

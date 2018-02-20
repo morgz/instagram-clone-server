@@ -15,11 +15,12 @@ defmodule Instagram.Accounts.User do
     timestamps()
   end
 
-  @doc false
   def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:username, :avatar, :facebook_id, :email, :first_name, :last_name])
-    |> validate_required([:username, :avatar, :facebook_id, :email, :first_name, :last_name])
-    |> unique_constraint([:email, :facebook_id])
+    |> validate_required([:avatar, :facebook_id, :email, :first_name, :last_name])
+    |> unique_constraint(:email)
+    |> unique_constraint(:facebook_id)
   end
+
 end

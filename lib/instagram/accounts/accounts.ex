@@ -8,6 +8,16 @@ defmodule Instagram.Accounts do
 
   alias Instagram.Accounts.User
 
+  def get_user_or_create(attrs, search_params) do
+    case Repo.get_by(User, Map.to_list(search_params)) do
+      nil ->
+        create_user(attrs)
+      user ->
+        {:ok, user}
+    end
+  end
+
+
   @doc """
   Returns the list of users.
 
@@ -50,6 +60,7 @@ defmodule Instagram.Accounts do
 
   """
   def create_user(attrs \\ %{}) do
+    IO.inspect(attrs)
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
