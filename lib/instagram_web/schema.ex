@@ -1,6 +1,7 @@
 defmodule InstagramWeb.Schema do
   use Absinthe.Schema
   alias InstagramWeb.Resolvers
+  alias InstagramWeb.Schema.Middleware
 
   import_types InstagramWeb.Schema.PostsTypes
   import_types InstagramWeb.Schema.AccountsTypes
@@ -9,6 +10,7 @@ defmodule InstagramWeb.Schema do
   query do
     @desc "Gets a list of followers photos"
     field :photos, list_of(:photo) do
+      middleware Middleware.Authorize
       resolve &Resolvers.Posts.photos/3
     end
 
@@ -17,7 +19,6 @@ defmodule InstagramWeb.Schema do
       arg :id, non_null(:id)
       resolve &Resolvers.Posts.photo/3
     end
-
   end
 
   mutation do
