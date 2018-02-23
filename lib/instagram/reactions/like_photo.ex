@@ -1,7 +1,7 @@
-defmodule Instagram.Reaction.LikePhoto do
+defmodule Instagram.Reactions.LikePhoto do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Instagram.Reaction.LikePhoto
+  alias Instagram.Reactions.LikePhoto
 
 
   schema "like_photos" do
@@ -14,7 +14,7 @@ defmodule Instagram.Reaction.LikePhoto do
   @doc false
   def changeset(%LikePhoto{} = like_photo, attrs) do
     like_photo
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:user_id, :photo_id])
+    |> validate_required([:user_id, :photo_id])
   end
 end
