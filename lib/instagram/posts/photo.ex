@@ -9,6 +9,7 @@ defmodule Instagram.Posts.Photo do
     field :image_url, :string
 
     has_many :likes, Instagram.Reactions.LikePhoto
+    belongs_to :user, Instagram.Accounts.User
 
     timestamps()
   end
@@ -16,7 +17,7 @@ defmodule Instagram.Posts.Photo do
   @doc false
   def changeset(%Photo{} = photo, attrs) do
     photo
-    |> cast(attrs, [:image_url, :caption])
-    |> validate_required([:image_url])
+    |> cast(attrs, [:image_url, :caption, :user_id])
+    |> validate_required([:image_url, :user_id])
   end
 end
