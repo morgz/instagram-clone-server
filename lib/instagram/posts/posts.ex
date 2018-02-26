@@ -117,6 +117,6 @@ defmodule Instagram.Posts do
   end
 
   def get_image_url(bucket, uuid) do
-    "https://s3.amazonaws.com/instagramclone-morgz/#{bucket}/#{uuid}.jpg"
+    "https://s3.amazonaws.com/instagram-clone-morgz/#{bucket}/#{uuid}.jpg"
   end
 end

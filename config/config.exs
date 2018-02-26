@@ -33,7 +33,7 @@ config :logger, :console,
     secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
     s3: [
       scheme: "https://",
-      host: "instagramclone-morgz.s3.amazonaws.com",
+      host: "instagram-clone-morgz.s3.amazonaws.com",
       region: "us-east-1"
     ]
 
