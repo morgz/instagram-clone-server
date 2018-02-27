@@ -18,7 +18,9 @@ defmodule Instagram.Posts do
 
   """
   def list_photos do
-    Repo.all(Photo)
+    Photo
+    |> order_by([desc: :inserted_at])
+    |> Repo.all
   end
 
   @doc """
