@@ -19,6 +19,7 @@ defmodule Instagram.Posts do
   """
   def list_photos do
     Photo
+    |> preload([:likes])
     |> order_by([desc: :inserted_at])
     |> Repo.all
   end

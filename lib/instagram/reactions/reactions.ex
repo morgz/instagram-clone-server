@@ -21,13 +21,18 @@ defmodule Instagram.Reactions do
     end
   end
 
-  def user_likes_photo(photo_id, user_id) do
+  def user_likes_photo(photo_id, user_id) when is_integer(photo_id) do
     result = get_like_photo(photo_id, user_id)
 
     case result do
       nil -> {:ok, false}
       _ -> {:ok, true}
     end
+  end
+
+  def user_likes_photo(photo, user_id) do
+    result = Enum.map(photo.likes, fn(x) -> x.user_id end) |> Enum.any?(fn(x) -> x == user_id end)
+    {:ok, result}
   end
 
   # @doc """
@@ -133,4 +138,6 @@ defmodule Instagram.Reactions do
 
     Repo.one(query)
   end
+
+
 end
