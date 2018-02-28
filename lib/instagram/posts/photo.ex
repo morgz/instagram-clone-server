@@ -10,6 +10,7 @@ defmodule Instagram.Posts.Photo do
 
     has_many :likes, Instagram.Reactions.LikePhoto
     belongs_to :user, Instagram.Accounts.User
+    has_many :comments, Instagram.Posts.Comment
 
     timestamps()
   end

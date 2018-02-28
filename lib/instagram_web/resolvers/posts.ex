@@ -20,4 +20,11 @@ defmodule InstagramWeb.Resolvers.Posts do
     end
   end
 
+  def create_comment(_, %{photo_id: photo_id, text: text}, %{context: %{current_user: current_user}}) do
+    args = Map.merge(%{photo_id: photo_id, text: text}, %{user_id: current_user.id})
+    with {:ok, comment} <- Posts.create_comment(args) do
+      {:ok, comment}
+    end
+  end
+
 end

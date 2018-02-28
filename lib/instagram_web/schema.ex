@@ -49,5 +49,13 @@ defmodule InstagramWeb.Schema do
       arg :caption, :string
       resolve &Resolvers.Posts.create_photo/3
     end
+
+    @desc "Create a comment for a photo"
+    field :create_comment, :comment do
+      middleware Middleware.Authorize
+      arg :photo_id, non_null(:id)
+      arg :text, non_null(:string)
+      resolve &Resolvers.Posts.create_comment/3
+    end
   end
 end
