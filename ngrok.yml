@@ -1,0 +1,8 @@
+authtoken: 61KXAV5HF7xcwrhsGS1A8_5twC9FV479RnqJaMgyMq1
+region: eu
+tunnels:
+  instagram:
+    region: eu
+    proto: http
+    addr: 4000
+    subdomain: funcmain
