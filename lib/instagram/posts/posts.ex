@@ -6,7 +6,7 @@ defmodule Instagram.Posts do
   import Ecto.Query, warn: false
   alias Instagram.Repo
 
-  alias Instagram.Posts.Photo
+  alias Instagram.Posts.{Photo, Comment}
 
   @doc """
   Returns the list of photos.
@@ -123,8 +123,6 @@ defmodule Instagram.Posts do
     "https://s3.amazonaws.com/instagram-clone-morgz/#{bucket}/#{uuid}.jpg"
   end
 
-  alias Instagram.Posts.Comment
-
   @doc """
   Creates a comment.
 
@@ -158,4 +156,10 @@ defmodule Instagram.Posts do
   def delete_comment(%Comment{} = comment) do
     Repo.delete(comment)
   end
+
+  def get_comments_for_photo(photo_id) do
+    query = from c in Comment, where: c.photo_id == ^photo_id, order_by: [desc: :inserted_at]
+    Repo.all(query)
+  end
+
 end

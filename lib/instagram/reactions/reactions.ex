@@ -31,8 +31,7 @@ defmodule Instagram.Reactions do
   end
 
   def user_likes_photo(photo, user_id) do
-    result = Enum.map(photo.likes, fn(x) -> x.user_id end) |> Enum.any?(fn(x) -> x == user_id end)
-    {:ok, result}
+    Enum.map(photo.likes, fn(x) -> x.user_id end) |> Enum.any?(fn(x) -> x == user_id end)
   end
 
   # @doc """

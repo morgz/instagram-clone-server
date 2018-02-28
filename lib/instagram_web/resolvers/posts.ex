@@ -27,4 +27,8 @@ defmodule InstagramWeb.Resolvers.Posts do
     end
   end
 
+  def get_comments(_, %{photo_id: photo_id},_) do
+    {:ok, Posts.get_comments_for_photo(photo_id)}
+  end
+
 end

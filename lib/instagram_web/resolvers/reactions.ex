@@ -8,9 +8,7 @@ defmodule InstagramWeb.Resolvers.Reactions do
   end
 
   def user_likes_photo(photo,_, %{context: %{current_user: current_user}}) do
-    with {:ok, message} <- Reactions.user_likes_photo(photo, current_user.id) do
-      {:ok, message}
-    end
+    {:ok, Reactions.user_likes_photo(photo, current_user.id)}
   end
 
 end
